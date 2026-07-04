@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Price Predictor</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <header>
+            <h1>📈 Stock Price Prediction Dashboard</h1>
+            <p>Multi-Horizon Machine Learning System (Classification + Regression)</p>
+        </header>
+
+        <section class="input-section">
+            <div class="input-group">
+                <label for="ticker-input">Ticker Symbol (e.g., AAPL, TATASTEEL.NS)</label>
+                <div class="input-row">
+                    <input type="text" id="ticker-input" value="AAPL" />
+                    <button id="predict-btn">Predict</button>
+                </div>
+            </div>
+        </section>
+
+        <div id="loading" class="hidden">
+            <div class="spinner"></div>
+            <p>Fetching data and running models...</p>
+        </div>
+
+        <div id="results-container" class="hidden">
+            <section class="asset-info">
+                <h2 id="asset-name">Asset: AAPL</h2>
+                <h3 id="market-price">Latest Market Price: $0.00</h3>
+            </section>
+
+            <section class="predictions-grid" id="predictions-grid">
+            </section>
+
+            <section class="tabs-section">
+                <div class="tabs">
+                    <button class="tab-btn active" data-tab="charts">📊 Technical Charts</button>
+                    <button class="tab-btn" data-tab="data">📦 Data & Export</button>
+                </div>
+
+                <div class="tab-content active" id="tab-charts">
+                    <div class="chart-container glass-panel">
+                        <h3>Candlestick + Bollinger Bands (Last 200 Days)</h3>
+                        <div id="chart-main" class="plotly-chart"></div>
+                    </div>
+                    <div class="chart-container glass-panel">
+                        <h3>RSI (Relative Strength Index)</h3>
+                        <div id="chart-rsi" class="plotly-chart"></div>
+                    </div>
+                    <div class="chart-container glass-panel">
+                        <h3>MACD (Moving Average Convergence Divergence)</h3>
+                        <div id="chart-macd" class="plotly-chart"></div>
+                    </div>
+                </div>
+
+                <div class="tab-content" id="tab-data">
+                    <div class="glass-panel">
+                        <h3>Prediction Summary Table</h3>
+                        <div class="table-responsive">
+                            <table id="summary-table">
+                                <thead>
+                                    <tr>
+                                        <th>Horizon</th>
+                                        <th>Expected Price</th>
+                                        <th>Return %</th>
+                                        <th>Signal</th>
+                                        <th>Confidence %</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <div class="download-section">
+                            <h3>Download Raw Dataset</h3>
+                            <button id="download-btn">Download Historical Feature Data CSV</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+    
+    <script src="app.js"></script>
+</body>
+</html>
