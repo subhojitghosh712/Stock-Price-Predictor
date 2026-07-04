@@ -116,6 +116,16 @@ python basic.py
 
 ---
 
+## Website Screenshots
+
+<img width="1500" height="700" alt="Screenshot 2026-07-04 173212" src="https://github.com/user-attachments/assets/2206b619-fa7c-401b-84d8-1b2f519e8d47" />
+<img width="800" height="700" alt="Screenshot 2026-07-04 173230" src="https://github.com/user-attachments/assets/7fe7666b-f58c-41c3-b23e-821a962b18b6" />
+<img width="1500" height="700" alt="Screenshot 2026-07-04 173250" src="https://github.com/user-attachments/assets/30766d74-0894-4736-a11b-6ba68a145ef7" />
+
+
+
+---
+
 ## ⚠️ Disclaimer
 
 **This software is for educational and informational purposes only.** It should not be considered financial advice. Stock markets are inherently volatile and unpredictable. Machine learning models are based on historical data and do not guarantee future results. Always do your own research or consult with a qualified financial advisor before making any investment decisions. The creators of this project hold no liability for any financial losses incurred while using this tool.
