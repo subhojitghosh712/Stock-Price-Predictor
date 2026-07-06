@@ -26,7 +26,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-def load_data(ticker, period="max"):
+def load_data(ticker, period="5y"):
     df = yf.download(ticker, period=period, auto_adjust=True)
     if isinstance(df.columns, pd.MultiIndex):
         df.columns = df.columns.get_level_values(0)
@@ -118,8 +118,8 @@ def predict(ticker: str):
         y_reg_train = target_return.loc[X_train.index]
         y_class_train = target_class.loc[X_train.index]
         
-        rf_class = RandomForestClassifier(n_estimators=1000, max_depth=8, random_state=42, n_jobs=-1)
-        rf_reg = RandomForestRegressor(n_estimators=1000, max_depth=8, random_state=42, n_jobs=-1)
+        rf_class = RandomForestClassifier(n_estimators=100, max_depth=8, random_state=42, n_jobs=-1)
+        rf_reg = RandomForestRegressor(n_estimators=100, max_depth=8, random_state=42, n_jobs=-1)
         
         rf_class.fit(X_train, y_class_train)
         rf_reg.fit(X_train, y_reg_train)
@@ -128,8 +128,8 @@ def predict(ticker: str):
         expected_return = float(rf_reg.predict(latest_features)[0])
         
         if XGB_AVAILABLE:
-            xgb_class = XGBClassifier(n_estimators=1000, learning_rate=0.05, max_depth=4, random_state=42, eval_metric="logloss")
-            xgb_reg = XGBRegressor(n_estimators=1000, learning_rate=0.05, max_depth=4, random_state=42)
+            xgb_class = XGBClassifier(n_estimators=100, learning_rate=0.05, max_depth=4, random_state=42, eval_metric="logloss")
+            xgb_reg = XGBRegressor(n_estimators=100, learning_rate=0.05, max_depth=4, random_state=42)
             
             xgb_class.fit(X_train, y_class_train)
             xgb_reg.fit(X_train, y_reg_train)
